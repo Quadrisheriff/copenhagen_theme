@@ -16,15 +16,17 @@ const converter = new showdown.Converter(
   }
 );
 
-const baseUrl = 'https://xmcyber-test.zendesk.com/hc/en-us';
-const token = process.env.ZENDESK_USER || 'aDihsWnxxeca9CuGkiGGpgodZzdpkdLOnxO9kL4M';
+const baseUrl = 'https://xmcyber-test.zendesk.com/hc/en-us';  
+const user = process.env.ZENDESK_USER || 'https://xmcyber-test.zendesk.com';
+const pass = process.env.ZENDESK_PASS || 'Sherif001';
 
 const zendesk_managers_agents_group_id = 554213;
 
 const request = rp.defaults({
   baseUrl,
   auth: {
-    token
+    user,
+    pass
   },
   json: true
 });
@@ -59,6 +61,8 @@ function parseLinks() {
 async function publish() {
   const { linksMap, linksRegexStr } = parseLinks();
   const linksRegex = new RegExp(linksRegexStr);
+  const fontAwesome =
+    '<script src="https://kit.fontawesome.com/9f58315920.js" crossorigin="anonymous"></script>';
  
   for (const section of config.sections || []) {
     for (const art of section.articles || []) {

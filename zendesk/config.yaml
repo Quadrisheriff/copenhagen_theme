@@ -1,10 +1,6 @@
 sections:
-  - name: Getting started
-    id: 360004204294
+  - name: XmCyber Testing
+    id: 360005085177
     articles:
-      - id: 360022884813
-        title: Introduction
+      - title: Introduction
         file: ../docs/index.md
-        hash: P4TdoY11LeORVUI5nhOrndwCV9y5x0/r2fkyqGvXxlc=
-        webLink: >-
-          https://xmcyber-test.zendesk.com/hc/en-us/articles/360022884813-index
