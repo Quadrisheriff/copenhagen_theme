@@ -14,15 +14,17 @@ Platform:
   darwin x64
 
 Trace: 
-  Error: connect ENETUNREACH 104.16.24.35:443 - Local (0.0.0.0:49982)
-      at internalConnect (net.js:882:16)
-      at defaultTriggerAsyncIdScope (internal/async_hooks.js:294:19)
-      at emitLookup (net.js:1029:9)
-      at /Users/salius/.yarn/releases/yarn-1.22.4.js:111562:28
-      at /Users/salius/.yarn/releases/yarn-1.22.4.js:111471:13
-      at RawTask.module.exports.RawTask.call (/Users/salius/.yarn/releases/yarn-1.22.4.js:94043:19)
-      at flush (/Users/salius/.yarn/releases/yarn-1.22.4.js:94125:29)
-      at process._tickCallback (internal/process/next_tick.js:61:11)
+  Error: https://registry.yarnpkg.com/npm/-/npm-6.14.2.tgz: ESOCKETTIMEDOUT
+      at ClientRequest.<anonymous> (/Users/salius/.yarn/releases/yarn-1.22.4.js:135786:19)
+      at Object.onceWrapper (events.js:286:20)
+      at ClientRequest.emit (events.js:198:13)
+      at TLSSocket.emitRequestTimeout (_http_client.js:673:40)
+      at Object.onceWrapper (events.js:286:20)
+      at TLSSocket.emit (events.js:198:13)
+      at TLSSocket.Socket._onTimeout (net.js:443:8)
+      at ontimeout (timers.js:436:11)
+      at tryOnTimeout (timers.js:300:5)
+      at listOnTimeout (timers.js:263:5)
 
 npm manifest: 
   {
@@ -40,18 +42,36 @@ npm manifest:
       "@semantic-release/git": "^9.0.0",
       "husky": "^4.2.3",
       "js-yaml": "^3.13.1",
-      "semantic-release": "^17.0.4"
+      "semantic-release": "^17.0.4",
+      "dotenv": "^8.0.0"
+    },
+    "scripts": {
+      "publish:zendesk": "export $(grep -v '^#' .env | xargs); cd zendesk; node -r dotenv/config publish.js"
+    },
+    "dependencies": {
+      "js-yaml": "^3.13.1",
+      "request": "^2.88.0",
+      "request-promise-native": "^1.0.7",
+      "showdown": "^1.9.0"
     },
     "commitlint": {
       "extends": [
         "@commitlint/config-conventional"
       ]
     },
+    "files": [
+      "docs/**/*",
+      "src/**/*",
+      "zendesk/links.json"
+    ],
     "husky": {
       "hooks": {
         "commit-msg": "commitlint -E HUSKY_GIT_PARAMS"
       }
-    }
+    },
+    "main": "src/index.js",
+    "author": "Quadri Sheriff <quadrisheriff0@gmail.com>",
+    "license": "MIT"
   }
 
 yarn manifest: 

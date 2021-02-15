@@ -1,6 +1,6 @@
 {
   "linksMap": {
-    "introduction": "https://xmcyber-test.zendesk.com/hc/en-us/articles/360022884813-index"
+    "index": "https://xmcyber-test.zendesk.com/hc/en-us/articles/360022884813-index"
   },
-  "linksRegexStr": "((\\.|\\.\\.)\\/)+((docs|guides|queries|dashboards)\\/)?((introduction)"
+  "linksRegexStr": "((\\.|\\.\\.)\\/)+((docs)\\/)?((index))(\\.md)"
 }
